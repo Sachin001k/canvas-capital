@@ -23,7 +23,7 @@ export function Footer() {
             </div>
             <div className="flex flex-col gap-2 text-sm">
               <span className="eyebrow mb-2">Elsewhere</span>
-              <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" className="story-link w-fit">Instagram</a>
+              <a href="https://www.instagram.com/mycanvasdreams/" target="_blank" rel="noreferrer" className="story-link w-fit">Instagram @mycanvasdreams</a>
               <a href="mailto:hello@mycanvasdreams.com" className="story-link w-fit">Email</a>
               <a href="https://sevasahayog.org/" target="_blank" rel="noreferrer" className="story-link w-fit">Seva Sahayog</a>
             </div>
