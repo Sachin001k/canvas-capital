@@ -89,7 +89,7 @@ function Index() {
             </Link>
           </div>
           <Reveal className="md:col-span-7 zoom-wrap">
-            <img src={teaching} alt="Children painting in a rural classroom" className="w-full h-[80vh] object-cover" loading="lazy" />
+            <img src={featuredArt} alt="Mother and Child – original acrylic painting" className="w-full h-[80vh] object-cover" loading="lazy" />
           </Reveal>
         </div>
       </section>
