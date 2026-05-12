@@ -16,7 +16,19 @@ export type Artwork = {
   file: string;
   price?: string; // INR amount, e.g. "20,000.00"
   sold?: boolean;
+  slug: string;
+  description?: string;
+  dimension?: string;
+  category?: string;
 };
+
+export function slugify(s: string): string {
+  return s
+    .toLowerCase()
+    .replace(/[—–]/g, "-")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
 
 export const artworks: Artwork[] = [
   { title: "Periwinkle Petals", file: "periwinkle-petals.jpg", price: "20,000.00" },
