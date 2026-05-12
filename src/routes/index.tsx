@@ -4,8 +4,11 @@ import { Section } from "@/components/Section";
 import { Reveal, StaggerWords } from "@/components/Reveal";
 import { MetricGrid } from "@/components/Metric";
 import { Marquee } from "@/components/Marquee";
-import art1 from "@/assets/art-1.jpg";
+import { artworks } from "@/data/artworks";
 import teaching from "@/assets/teaching.jpg";
+
+const art1 = artworks.find((a) => a.title === "Hues of Autumn")!.file;
+const featuredArt = artworks.find((a) => a.title === "Mother and Child – I")!.file;
 
 export const Route = createFileRoute("/")({
   head: () => ({
