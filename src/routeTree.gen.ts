@@ -15,6 +15,7 @@ import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProductSlugRouteImport } from './routes/product.$slug'
 
 const WorkRoute = WorkRouteImport.update({
   id: '/work',
@@ -46,6 +47,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProductSlugRoute = ProductSlugRouteImport.update({
+  id: '/product/$slug',
+  path: '/product/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -54,6 +60,7 @@ export interface FileRoutesByFullPath {
   '/impact': typeof ImpactRoute
   '/research': typeof ResearchRoute
   '/work': typeof WorkRoute
+  '/product/$slug': typeof ProductSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +69,7 @@ export interface FileRoutesByTo {
   '/impact': typeof ImpactRoute
   '/research': typeof ResearchRoute
   '/work': typeof WorkRoute
+  '/product/$slug': typeof ProductSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,12 +79,27 @@ export interface FileRoutesById {
   '/impact': typeof ImpactRoute
   '/research': typeof ResearchRoute
   '/work': typeof WorkRoute
+  '/product/$slug': typeof ProductSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/contact' | '/impact' | '/research' | '/work'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/impact'
+    | '/research'
+    | '/work'
+    | '/product/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/impact' | '/research' | '/work'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/impact'
+    | '/research'
+    | '/work'
+    | '/product/$slug'
   id:
     | '__root__'
     | '/'
@@ -85,6 +108,7 @@ export interface FileRouteTypes {
     | '/impact'
     | '/research'
     | '/work'
+    | '/product/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -94,6 +118,7 @@ export interface RootRouteChildren {
   ImpactRoute: typeof ImpactRoute
   ResearchRoute: typeof ResearchRoute
   WorkRoute: typeof WorkRoute
+  ProductSlugRoute: typeof ProductSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -140,6 +165,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/product/$slug': {
+      id: '/product/$slug'
+      path: '/product/$slug'
+      fullPath: '/product/$slug'
+      preLoaderRoute: typeof ProductSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -150,7 +182,18 @@ const rootRouteChildren: RootRouteChildren = {
   ImpactRoute: ImpactRoute,
   ResearchRoute: ResearchRoute,
   WorkRoute: WorkRoute,
+  ProductSlugRoute: ProductSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
