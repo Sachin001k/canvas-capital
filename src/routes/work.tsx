@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Section } from "@/components/Section";
 import { Reveal } from "@/components/Reveal";
 import { artworks } from "@/data/artworks";
@@ -44,12 +44,16 @@ function WorkPage() {
           {featured.map((w, i) => (
             <div key={w.title} className={`grid md:grid-cols-12 gap-10 items-center ${i % 2 ? "md:[&>*:first-child]:order-2" : ""}`}>
               <Reveal className="md:col-span-7 zoom-wrap">
-                <img src={w.file} alt={w.title} className="w-full h-[80vh] object-cover" loading="lazy" />
+                <Link to="/product/$slug" params={{ slug: w.slug }} className="block">
+                  <img src={w.file} alt={w.title} className="w-full h-[80vh] object-cover" loading="lazy" />
+                </Link>
               </Reveal>
               <div className="md:col-span-5 md:px-8 space-y-6">
                 <Reveal>
                   <p className="eyebrow">No. 0{i + 1}</p>
-                  <h3 className="display-md mt-3">{w.title}</h3>
+                  <Link to="/product/$slug" params={{ slug: w.slug }} className="block">
+                    <h3 className="display-md mt-3 hover:opacity-80 transition">{w.title}</h3>
+                  </Link>
                 </Reveal>
                 <Reveal delay={0.1}>
                   <p className="italic-serif text-muted-foreground">
@@ -72,6 +76,11 @@ function WorkPage() {
                     </div>
                   </dl>
                 </Reveal>
+                <Reveal delay={0.3}>
+                  <Link to="/product/$slug" params={{ slug: w.slug }} className="inline-block text-xs tracking-[0.2em] uppercase border-b border-foreground pb-1 hover:opacity-70 transition">
+                    View &amp; enquire →
+                  </Link>
+                </Reveal>
               </div>
             </div>
           ))}
@@ -83,30 +92,32 @@ function WorkPage() {
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-10">
           {rest.map((w, i) => (
             <Reveal key={w.title} delay={(i % 6) * 0.04}>
-              <figure className="group">
-                <div className="zoom-wrap relative aspect-[4/5] overflow-hidden bg-secondary/40">
-                  <img
-                    src={w.file}
-                    alt={w.title}
-                    className="absolute inset-0 w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                  {w.sold && (
-                    <span
-                      className="absolute top-4 left-4 px-3 py-1 text-[10px] tracking-[0.2em] uppercase bg-background/90 backdrop-blur-sm"
-                      style={{ color: "var(--burgundy)" }}
-                    >
-                      Sold out
-                    </span>
-                  )}
-                </div>
-                <figcaption className="mt-4 flex items-baseline justify-between gap-4">
-                  <span className="font-[family-name:var(--font-display)] italic text-lg leading-tight">{w.title}</span>
-                  {w.price && (
-                    <span className="text-xs text-muted-foreground tabular-nums whitespace-nowrap">₹{w.price}</span>
-                  )}
-                </figcaption>
-              </figure>
+              <Link to="/product/$slug" params={{ slug: w.slug }} className="group block">
+                <figure>
+                  <div className="zoom-wrap relative aspect-[4/5] overflow-hidden bg-secondary/40">
+                    <img
+                      src={w.file}
+                      alt={w.title}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                    {w.sold && (
+                      <span
+                        className="absolute top-4 left-4 px-3 py-1 text-[10px] tracking-[0.2em] uppercase bg-background/90 backdrop-blur-sm"
+                        style={{ color: "var(--burgundy)" }}
+                      >
+                        Sold out
+                      </span>
+                    )}
+                  </div>
+                  <figcaption className="mt-4 flex items-baseline justify-between gap-4">
+                    <span className="font-[family-name:var(--font-display)] italic text-lg leading-tight group-hover:opacity-70 transition">{w.title}</span>
+                    {w.price && (
+                      <span className="text-xs text-muted-foreground tabular-nums whitespace-nowrap">₹{w.price}</span>
+                    )}
+                  </figcaption>
+                </figure>
+              </Link>
             </Reveal>
           ))}
         </div>
