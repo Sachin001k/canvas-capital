@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Section } from "@/components/Section";
 import { Reveal } from "@/components/Reveal";
-import research from "@/assets/research.jpg";
+import { artworks } from "@/data/artworks";
+const research = artworks.find((a) => a.slug === "rhythm-of-the-mind")!.file;
 
 export const Route = createFileRoute("/research")({
   head: () => ({

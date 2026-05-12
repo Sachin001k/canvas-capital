@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Section } from "@/components/Section";
 import { Reveal } from "@/components/Reveal";
-import portrait from "@/assets/portrait.jpg";
+import portrait from "@/assets/ayontika-portrait.png";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -25,6 +25,17 @@ function AboutPage() {
             A girl with a<br />
             <span className="italic-serif" style={{ color: "var(--forest)" }}>brush</span> and a <span className="italic-serif" style={{ color: "var(--burgundy)" }}>question.</span>
           </h1>
+        </Reveal>
+      </section>
+
+      {/* Top portrait — full bleed */}
+      <section className="mx-auto max-w-[1500px] px-6 md:px-10 mt-4 mb-16">
+        <Reveal className="zoom-wrap">
+          <img
+            src={portrait}
+            alt="Ayontika Naha — portrait"
+            className="w-full h-[70vh] md:h-[85vh] object-cover object-center"
+          />
         </Reveal>
       </section>
 

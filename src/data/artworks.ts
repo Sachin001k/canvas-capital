@@ -16,7 +16,19 @@ export type Artwork = {
   file: string;
   price?: string; // INR amount, e.g. "20,000.00"
   sold?: boolean;
+  slug: string;
+  description?: string;
+  dimension?: string;
+  category?: string;
 };
+
+export function slugify(s: string): string {
+  return s
+    .toLowerCase()
+    .replace(/[—–]/g, "-")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
 
 export const artworks: Artwork[] = [
   { title: "Periwinkle Petals", file: "periwinkle-petals.jpg", price: "20,000.00" },
@@ -55,4 +67,8 @@ export const artworks: Artwork[] = [
   { title: "Rhythm of the Mind", file: "rhythm-of-the-mind.jpeg" },
   { title: "Chefchaouen", file: "chefchaouen.jpeg" },
   { title: "A Journey Called Life", file: "a-journey-called-life.jpeg" },
-].map((a) => ({ ...a, file: get(a.file) }));
+].map((a) => ({ ...a, file: get(a.file), slug: slugify(a.title) }));
+
+export function findArtwork(slug: string): Artwork | undefined {
+  return artworks.find((a) => a.slug === slug);
+}

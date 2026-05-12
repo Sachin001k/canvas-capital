@@ -2,8 +2,11 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Section } from "@/components/Section";
 import { Reveal } from "@/components/Reveal";
 import { MetricGrid } from "@/components/Metric";
-import teaching from "@/assets/teaching.jpg";
-import math from "@/assets/math.jpg";
+import { artworks } from "@/data/artworks";
+
+const findArt = (slug: string) => artworks.find((a) => a.slug === slug)!;
+const teaching = findArt("mother-and-child-i").file;
+const math = findArt("humanity").file;
 
 export const Route = createFileRoute("/impact")({
   head: () => ({
