@@ -28,17 +28,6 @@ function AboutPage() {
         </Reveal>
       </section>
 
-      {/* Top portrait — full bleed */}
-      <section className="mx-auto max-w-[1500px] px-6 md:px-10 mt-4 mb-16">
-        <Reveal className="zoom-wrap">
-          <img
-            src={portrait}
-            alt="Ayontika Naha — portrait"
-            className="w-full h-[70vh] md:h-[85vh] object-cover object-center"
-          />
-        </Reveal>
-      </section>
-
       <Section>
         <div className="grid md:grid-cols-12 gap-12">
           <Reveal className="md:col-span-5 zoom-wrap">

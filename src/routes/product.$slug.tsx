@@ -2,6 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Section } from "@/components/Section";
 import { Reveal } from "@/components/Reveal";
 import { artworks, findArtwork } from "@/data/artworks";
+import { ShoppingCart } from "lucide-react";
 
 export const Route = createFileRoute("/product/$slug")({
   head: ({ params }) => {
@@ -40,7 +41,7 @@ function ProductPage() {
   const a = Route.useLoaderData();
   const related = artworks.filter((x) => x.slug !== a.slug).slice(0, 4);
   const waMsg = encodeURIComponent(
-    `Hi Ayontika! I'm interested in "${a.title}"${a.price ? ` (₹${a.price})` : ""}. Is it available?`
+    `Hi Ayontika! I'm interested in "${a.title}"${a.price ? ` (₹${a.price})` : ""}. Is it available?`,
   );
   const waLink = `https://wa.me/${WHATSAPP}?text=${waMsg}`;
 
@@ -110,29 +111,20 @@ function ProductPage() {
             </Reveal>
 
             <Reveal delay={0.2}>
-              <div className="flex flex-col sm:flex-row gap-3 pt-4">
-                {!a.sold && (
-                  <a
-                    href={waLink}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center justify-center px-6 py-4 text-xs tracking-[0.2em] uppercase bg-foreground text-background hover:opacity-90 transition"
+              {!a.sold ? (
+                <div className="pt-4">
+                  <Link
+                    to="/order/$slug"
+                    params={{ slug: a.slug }}
+                    className="w-full inline-flex items-center justify-center gap-3 px-6 py-4 text-xs tracking-[0.2em] uppercase border border-foreground/80 hover:bg-foreground hover:text-background transition"
                   >
-                    Place order on WhatsApp
-                  </a>
-                )}
-                <a
-                  href={waLink}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center justify-center px-6 py-4 text-xs tracking-[0.2em] uppercase border border-foreground/80 hover:bg-foreground hover:text-background transition"
-                >
-                  Enquire on WhatsApp
-                </a>
-              </div>
-              <p className="mt-3 text-xs text-muted-foreground">
-                Or email <a className="story-link" href="mailto:hello@mycanvasdreams.com">hello@mycanvasdreams.com</a>
-              </p>
+                    <ShoppingCart className="h-4 w-4" aria-hidden="true" />
+                    Place order
+                  </Link>
+                </div>
+              ) : (
+                <p className="pt-4 text-sm text-muted-foreground">This artwork is sold out.</p>
+              )}
             </Reveal>
 
             <Reveal delay={0.25}>

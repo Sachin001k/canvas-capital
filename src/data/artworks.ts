@@ -1,5 +1,5 @@
 // Artworks sourced from https://mycanvasdreams.com/shop/
-const modules = import.meta.glob("@/assets/shop/*.{jpg,jpeg,png}", {
+const modules = import.meta.glob("/src/assets/shop/*.{jpg,jpeg,png}", {
   eager: true,
   query: "?url",
   import: "default",

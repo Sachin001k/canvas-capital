@@ -16,6 +16,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductSlugRouteImport } from './routes/product.$slug'
+import { Route as OrderSlugRouteImport } from './routes/order.$slug'
 
 const WorkRoute = WorkRouteImport.update({
   id: '/work',
@@ -52,6 +53,11 @@ const ProductSlugRoute = ProductSlugRouteImport.update({
   path: '/product/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OrderSlugRoute = OrderSlugRouteImport.update({
+  id: '/order/$slug',
+  path: '/order/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -60,6 +66,7 @@ export interface FileRoutesByFullPath {
   '/impact': typeof ImpactRoute
   '/research': typeof ResearchRoute
   '/work': typeof WorkRoute
+  '/order/$slug': typeof OrderSlugRoute
   '/product/$slug': typeof ProductSlugRoute
 }
 export interface FileRoutesByTo {
@@ -69,6 +76,7 @@ export interface FileRoutesByTo {
   '/impact': typeof ImpactRoute
   '/research': typeof ResearchRoute
   '/work': typeof WorkRoute
+  '/order/$slug': typeof OrderSlugRoute
   '/product/$slug': typeof ProductSlugRoute
 }
 export interface FileRoutesById {
@@ -79,6 +87,7 @@ export interface FileRoutesById {
   '/impact': typeof ImpactRoute
   '/research': typeof ResearchRoute
   '/work': typeof WorkRoute
+  '/order/$slug': typeof OrderSlugRoute
   '/product/$slug': typeof ProductSlugRoute
 }
 export interface FileRouteTypes {
@@ -90,6 +99,7 @@ export interface FileRouteTypes {
     | '/impact'
     | '/research'
     | '/work'
+    | '/order/$slug'
     | '/product/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -99,6 +109,7 @@ export interface FileRouteTypes {
     | '/impact'
     | '/research'
     | '/work'
+    | '/order/$slug'
     | '/product/$slug'
   id:
     | '__root__'
@@ -108,6 +119,7 @@ export interface FileRouteTypes {
     | '/impact'
     | '/research'
     | '/work'
+    | '/order/$slug'
     | '/product/$slug'
   fileRoutesById: FileRoutesById
 }
@@ -118,6 +130,7 @@ export interface RootRouteChildren {
   ImpactRoute: typeof ImpactRoute
   ResearchRoute: typeof ResearchRoute
   WorkRoute: typeof WorkRoute
+  OrderSlugRoute: typeof OrderSlugRoute
   ProductSlugRoute: typeof ProductSlugRoute
 }
 
@@ -172,6 +185,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/order/$slug': {
+      id: '/order/$slug'
+      path: '/order/$slug'
+      fullPath: '/order/$slug'
+      preLoaderRoute: typeof OrderSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -182,6 +202,7 @@ const rootRouteChildren: RootRouteChildren = {
   ImpactRoute: ImpactRoute,
   ResearchRoute: ResearchRoute,
   WorkRoute: WorkRoute,
+  OrderSlugRoute: OrderSlugRoute,
   ProductSlugRoute: ProductSlugRoute,
 }
 export const routeTree = rootRouteImport
