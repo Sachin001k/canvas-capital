@@ -67,4 +67,8 @@ export const artworks: Artwork[] = [
   { title: "Rhythm of the Mind", file: "rhythm-of-the-mind.jpeg" },
   { title: "Chefchaouen", file: "chefchaouen.jpeg" },
   { title: "A Journey Called Life", file: "a-journey-called-life.jpeg" },
-].map((a) => ({ ...a, file: get(a.file) }));
+].map((a) => ({ ...a, file: get(a.file), slug: slugify(a.title) }));
+
+export function findArtwork(slug: string): Artwork | undefined {
+  return artworks.find((a) => a.slug === slug);
+}
