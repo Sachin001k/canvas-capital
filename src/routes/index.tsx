@@ -5,7 +5,6 @@ import { Reveal, StaggerWords } from "@/components/Reveal";
 import { MetricGrid } from "@/components/Metric";
 import { Marquee } from "@/components/Marquee";
 import { artworks } from "@/data/artworks";
-import teaching from "@/assets/teaching.jpg";
 
 const art1 = artworks.find((a) => a.title === "Hues of Autumn")!.file;
 const featuredArt = artworks.find((a) => a.title === "Mother and Child – I")!.file;
