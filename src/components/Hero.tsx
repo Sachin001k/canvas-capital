@@ -1,9 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import collage from "@/assets/hero-collage.jpg";
-import art2 from "@/assets/art-2.jpg";
-import research from "@/assets/research.jpg";
+import { artworks } from "@/data/artworks";
+
+const collage = artworks.find((a) => a.title === "Hues of Autumn")!.file;
+const art2 = artworks.find((a) => a.title === "Periwinkle Petals")!.file;
+const research = artworks.find((a) => a.title === "Chefchaouen")!.file;
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
