@@ -12,12 +12,12 @@ export const Route = createFileRoute("/work")({
       {
         name: "description",
         content:
-          "Browse and buy original paintings by Ayontika Naha. 50–75% of every sale funds girls' education through Seva Sahayog. Ships within India.",
+          "Browse and buy original paintings by Ayontika Naha. 60% of every sale funds girls' education through Seva Sahayog.",
       },
       { property: "og:title", content: "The Gallery — My Canvas Dreams" },
       {
         property: "og:description",
-        content: "Original paintings of nature, streets and everyday life. Ships within India.",
+        content: "Original paintings of nature, streets and everyday life.",
       },
     ],
   }),
@@ -67,8 +67,7 @@ function WorkPage() {
             {site.ngo} to fund the education of underprivileged girls.
           </p>
           <p className="mt-6 text-sm text-muted-foreground">
-            {artworks.length} works · {availableCount} available · {soldCount} in private homes ·
-            Ships within India
+            {artworks.length} works · {availableCount} available · {soldCount} in private homes
           </p>
         </Reveal>
       </section>
@@ -114,7 +113,7 @@ function WorkPage() {
                   </p>
                 </Reveal>
                 <Reveal delay={0.2}>
-                  <dl className="grid grid-cols-3 gap-4 pt-6 border-t border-border/60 text-sm">
+                  <dl className="grid grid-cols-2 gap-4 pt-6 border-t border-border/60 text-sm">
                     <div>
                       <dt className="eyebrow text-[10px]">Price</dt>
                       <dd className="mt-2">{w.price ? `₹${w.price}` : "On request"}</dd>
@@ -122,10 +121,6 @@ function WorkPage() {
                     <div>
                       <dt className="eyebrow text-[10px]">Status</dt>
                       <dd className="mt-2">{w.sold ? "Sold" : "Available"}</dd>
-                    </div>
-                    <div>
-                      <dt className="eyebrow text-[10px]">Ships</dt>
-                      <dd className="mt-2">India only</dd>
                     </div>
                   </dl>
                 </Reveal>

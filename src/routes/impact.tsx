@@ -8,7 +8,7 @@ import { site } from "@/data/site";
 
 const findArt = (slug: string) => artworks.find((a) => a.slug === slug)!;
 const artImage = findArt("mother-and-child-ii");
-const mathImage = findArt("humanity");
+const mathImage = findArt("the-divine-connection");
 
 export const Route = createFileRoute("/impact")({
   head: () => ({
@@ -166,7 +166,7 @@ function ImpactPage() {
         <MetricGrid
           items={[
             { value: "₹3.4L+", label: "Raised across all initiatives" },
-            { value: "1,200+", label: "Students reached" },
+            { value: "1,800+", label: "Students reached" },
             { value: "04", label: "Tribal schools partnered" },
             { value: "300+", label: "Competition participants" },
           ]}

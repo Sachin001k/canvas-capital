@@ -17,7 +17,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Original paintings by Mumbai artist Ayontika Naha. 50–75% of every sale funds the education of underprivileged girls through Seva Sahayog.",
+          "Original paintings by Mumbai artist Ayontika Naha. 60% of every sale funds the education of underprivileged girls through Seva Sahayog.",
       },
       { property: "og:title", content: "My Canvas Dreams — Original Paintings by Ayontika Naha" },
       {
@@ -93,7 +93,7 @@ function Index() {
             { value: "₹1.25L+", label: "Raised through art" },
             { value: "35+", label: "Paintings sold" },
             { value: site.donationShare, label: "Of every sale donated" },
-            { value: "1,200+", label: "Students reached" },
+            { value: "1,800+", label: "Students reached" },
           ]}
         />
         <Reveal>
@@ -178,7 +178,7 @@ function Index() {
               to: "/work",
               n: "01",
               t: "The Gallery",
-              d: "Original paintings, available to buy within India.",
+              d: "Original paintings, available to buy.",
             },
             {
               to: "/impact",

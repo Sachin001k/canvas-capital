@@ -79,7 +79,7 @@ export function Footer() {
               © {new Date().getFullYear()} {site.artist}. All artwork and images are the
               artist&rsquo;s own.
             </p>
-            <p>{site.city} · Paintings ship within India</p>
+            <p>{site.city}</p>
           </div>
         </div>
       </div>

@@ -149,7 +149,7 @@ function ProductPage() {
             </Reveal>
 
             <Reveal delay={0.15}>
-              <dl className="grid grid-cols-3 gap-4 pt-6 border-t border-border/60 text-sm">
+              <dl className="grid grid-cols-2 gap-4 pt-6 border-t border-border/60 text-sm">
                 <div>
                   <dt className="eyebrow text-[10px]">Status</dt>
                   <dd className="mt-2">{a.sold ? "Sold" : "Available"}</dd>
@@ -157,10 +157,6 @@ function ProductPage() {
                 <div>
                   <dt className="eyebrow text-[10px]">Edition</dt>
                   <dd className="mt-2">Original, signed</dd>
-                </div>
-                <div>
-                  <dt className="eyebrow text-[10px]">Ships</dt>
-                  <dd className="mt-2">India only</dd>
                 </div>
               </dl>
             </Reveal>

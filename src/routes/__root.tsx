@@ -60,7 +60,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Original paintings by Mumbai artist Ayontika Naha. 50–75% of every sale funds the education of underprivileged girls through Seva Sahayog.",
+          "Original paintings by Mumbai artist Ayontika Naha. 60% of every sale funds the education of underprivileged girls through Seva Sahayog.",
       },
       { property: "og:title", content: "My Canvas Dreams — Ayontika Naha" },
       {

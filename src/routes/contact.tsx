@@ -141,7 +141,6 @@ function ContactPage() {
             <div>
               <p className="eyebrow mb-3">Based in</p>
               <p className="text-xl italic-serif">{site.city}</p>
-              <p className="mt-2 text-sm text-muted-foreground">Paintings ship within India.</p>
             </div>
           </div>
 

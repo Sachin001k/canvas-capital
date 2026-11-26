@@ -32,16 +32,12 @@ export function slugify(s: string): string {
 
 export const artworks: Artwork[] = [
   { title: "Periwinkle Petals", file: "periwinkle-petals.jpg", price: "20,000.00" },
-  { title: "Blossom Wonder", file: "blossom-wonder.jpg", price: "12,000.00" },
   {
     title: "The Starry Night rendition",
     file: "the-starry-night-rendition.jpg",
     price: "18,000.00",
   },
   { title: "The Hurricane Lamp", file: "the-hurricane-lamp.jpg", price: "15,000.00" },
-  { title: "Friends", file: "friends.jpg", price: "15,000.00", sold: true },
-  { title: "Crimson Nectar", file: "crimson-nectar.jpg", price: "20,000.00", sold: true },
-  { title: "Hues of Autumn", file: "hues-of-autumn.jpg", price: "25,000.00" },
   { title: "Autumn in France", file: "autumn-in-france.jpg", price: "15,000.00", sold: true },
   {
     title: "Paros Island, Greece",
@@ -55,7 +51,6 @@ export const artworks: Artwork[] = [
     price: "10,000.00",
     sold: true,
   },
-  { title: "Calavera", file: "calavera.jpeg", price: "10,000.00", sold: true },
   { title: "Piercing Gaze", file: "piercing-gaze.jpeg", price: "20,000.00" },
   { title: "Expressions (Series)", file: "expressions-series.jpg" },
   { title: "A Bridge in the Monsoons", file: "a-bridge-in-the-monsoons.jpeg" },
@@ -65,13 +60,11 @@ export const artworks: Artwork[] = [
   { title: "The Kolkata Series", file: "the-kolkata-series.jpg", sold: true },
   { title: "Hues of Monsoon (Series II)", file: "hues-of-monsoon-series-ii.jpg", sold: true },
   { title: "The Leopard", file: "the-leopard.jpeg", sold: true },
-  { title: "Hues of Monsoon", file: "hues-of-monsoon.jpg", sold: true },
   { title: "The Wine Glass", file: "the-wine-glass.jpg", sold: true },
   { title: "The Optimistic Kingfisher", file: "the-optimistic-kingfisher.jpg", sold: true },
   { title: "Metro Nightlife", file: "metro-nightlife.jpg", sold: true },
   { title: "The Roar", file: "the-roar.jpg" },
   { title: "The Majestic Elephant", file: "the-majestic-elephant.jpg" },
-  { title: "Humanity", file: "humanity.jpeg" },
   { title: "Mother and Child – II", file: "mother-and-child-ii.jpeg" },
   { title: "Mother and Child – I", file: "mother-and-child-i.jpeg" },
   { title: "Devi Durga", file: "devi-durga.jpeg", sold: true },
@@ -81,6 +74,9 @@ export const artworks: Artwork[] = [
   { title: "Rhythm of the Mind", file: "rhythm-of-the-mind.jpeg" },
   { title: "Chefchaouen", file: "chefchaouen.jpeg" },
   { title: "A Journey Called Life", file: "a-journey-called-life.jpeg" },
+  // TODO: confirm real titles, prices and sold status for these two (added from the "Website pics" Drive folder).
+  { title: "Moonlit Leopard", file: "moonlit-leopard.jpg" },
+  { title: "Charcoal Landscape", file: "charcoal-landscape.jpg" },
 ].map((a) => ({
   ...a,
   file: get(a.file),

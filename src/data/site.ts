@@ -29,7 +29,7 @@ export const site = {
     ifsc: "HDFC0000543",
   },
 
-  donationShare: "50–75%",
+  donationShare: "60%",
   ngo: "Seva Sahayog",
 } as const;
 

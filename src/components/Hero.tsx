@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { artworks } from "@/data/artworks";
 import { site } from "@/data/site";
 
-const collage = artworks.find((a) => a.title === "Hues of Autumn")!.file;
+const collage = artworks.find((a) => a.title === "Moonlit Leopard")!.file;
 const art2 = artworks.find((a) => a.title === "Periwinkle Petals")!.file;
 const research = artworks.find((a) => a.title === "Chefchaouen")!.file;
 
@@ -92,7 +92,7 @@ export function Hero() {
             {[
               { v: "₹1.25L+", l: "raised through art" },
               { v: "35+", l: "paintings sold" },
-              { v: "1,200+", l: "students reached" },
+              { v: "1,800+", l: "students reached" },
             ].map((s) => (
               <div key={s.l}>
                 <dt className="sr-only">{s.l}</dt>
@@ -116,7 +116,7 @@ export function Hero() {
           >
             <img
               src={collage}
-              alt="Hues of Autumn — painting by Ayontika Naha"
+              alt="Moonlit Leopard, painting by Ayontika Naha"
               className="w-full h-full object-cover object-center"
             />
           </motion.div>

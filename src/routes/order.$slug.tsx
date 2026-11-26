@@ -102,7 +102,7 @@ function OrderPage() {
             <h2 className="display-md mt-3">Send your confirmation</h2>
             <p className="mt-4 text-muted-foreground leading-relaxed">
               Message me on WhatsApp with your payment reference and delivery address. I&rsquo;ll
-              confirm your order and arrange shipping within India.
+              confirm your order and arrange delivery.
             </p>
             <div className="mt-8">
               <ExternalLink
