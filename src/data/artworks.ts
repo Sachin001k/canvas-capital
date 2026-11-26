@@ -33,14 +33,28 @@ export function slugify(s: string): string {
 export const artworks: Artwork[] = [
   { title: "Periwinkle Petals", file: "periwinkle-petals.jpg", price: "20,000.00" },
   { title: "Blossom Wonder", file: "blossom-wonder.jpg", price: "12,000.00" },
-  { title: "The Starry Night rendition", file: "the-starry-night-rendition.jpg", price: "18,000.00" },
+  {
+    title: "The Starry Night rendition",
+    file: "the-starry-night-rendition.jpg",
+    price: "18,000.00",
+  },
   { title: "The Hurricane Lamp", file: "the-hurricane-lamp.jpg", price: "15,000.00" },
   { title: "Friends", file: "friends.jpg", price: "15,000.00", sold: true },
   { title: "Crimson Nectar", file: "crimson-nectar.jpg", price: "20,000.00", sold: true },
   { title: "Hues of Autumn", file: "hues-of-autumn.jpg", price: "25,000.00" },
   { title: "Autumn in France", file: "autumn-in-france.jpg", price: "15,000.00", sold: true },
-  { title: "Paros Island, Greece", file: "paros-island-greece.jpeg", price: "10,000.00", sold: true },
-  { title: "Jardin Majorelle — Yves Saint Laurent Garden", file: "jardin-majorelle-yves-saint-laurent-garden.jpeg", price: "10,000.00", sold: true },
+  {
+    title: "Paros Island, Greece",
+    file: "paros-island-greece.jpeg",
+    price: "10,000.00",
+    sold: true,
+  },
+  {
+    title: "Jardin Majorelle — Yves Saint Laurent Garden",
+    file: "jardin-majorelle-yves-saint-laurent-garden.jpeg",
+    price: "10,000.00",
+    sold: true,
+  },
   { title: "Calavera", file: "calavera.jpeg", price: "10,000.00", sold: true },
   { title: "Piercing Gaze", file: "piercing-gaze.jpeg", price: "20,000.00" },
   { title: "Expressions (Series)", file: "expressions-series.jpg" },
@@ -67,7 +81,12 @@ export const artworks: Artwork[] = [
   { title: "Rhythm of the Mind", file: "rhythm-of-the-mind.jpeg" },
   { title: "Chefchaouen", file: "chefchaouen.jpeg" },
   { title: "A Journey Called Life", file: "a-journey-called-life.jpeg" },
-].map((a) => ({ ...a, file: get(a.file), slug: slugify(a.title) }));
+].map((a) => ({
+  ...a,
+  file: get(a.file),
+  slug: slugify(a.title),
+  price: a.price?.replace(/\.00$/, ""), // "20,000.00" -> "20,000"
+}));
 
 export function findArtwork(slug: string): Artwork | undefined {
   return artworks.find((a) => a.slug === slug);

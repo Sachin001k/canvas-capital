@@ -12,7 +12,9 @@ type Props = {
 const variants: Variants = {
   hidden: { opacity: 0, y: 24, filter: "blur(6px)" },
   show: (d: number) => ({
-    opacity: 1, y: 0, filter: "blur(0px)",
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
     transition: { duration: 1, ease: [0.2, 0.8, 0.2, 1], delay: d },
   }),
 };

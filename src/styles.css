@@ -66,9 +66,9 @@
   --ring: oklch(0.42 0.04 155);
 
   /* Brand accents */
-  --forest: oklch(0.42 0.04 155);   /* #31473A */
-  --gold:   oklch(0.72 0.09 80);    /* #C8A96B */
-  --burgundy: oklch(0.42 0.07 25);  /* #6E3B3B */
+  --forest: oklch(0.42 0.04 155); /* #31473A */
+  --gold: oklch(0.72 0.09 80); /* #C8A96B */
+  --burgundy: oklch(0.42 0.07 25); /* #6E3B3B */
 
   --font-display: "Cormorant Garamond", "Playfair Display", ui-serif, Georgia, serif;
   --font-serif: "Playfair Display", ui-serif, Georgia, serif;
@@ -76,9 +76,13 @@
 }
 
 @layer base {
-  * { border-color: var(--color-border); }
+  * {
+    border-color: var(--color-border);
+  }
 
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+  }
 
   body {
     background-color: var(--color-background);
@@ -94,7 +98,14 @@
     color: var(--background);
   }
 
-  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 400; letter-spacing: -0.02em; }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
 }
 
 /* Grain overlay */
@@ -110,32 +121,104 @@
 }
 
 /* Editorial display utilities */
-.display-xl { font-family: var(--font-display); font-size: clamp(3.5rem, 11vw, 12rem); line-height: 0.9; letter-spacing: -0.035em; font-weight: 400; }
-.display-lg { font-family: var(--font-display); font-size: clamp(2.5rem, 7vw, 6.5rem); line-height: 0.95; letter-spacing: -0.03em; font-weight: 400; }
-.display-md { font-family: var(--font-display); font-size: clamp(1.75rem, 4vw, 3.25rem); line-height: 1.05; letter-spacing: -0.02em; }
-.eyebrow { font-family: var(--font-sans); font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted-foreground); }
-.italic-serif { font-family: var(--font-serif); font-style: italic; }
+.display-xl {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 11vw, 12rem);
+  line-height: 0.9;
+  letter-spacing: -0.035em;
+  font-weight: 400;
+}
+.display-lg {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 7vw, 6.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  font-weight: 400;
+}
+.display-md {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 3.25rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+.italic-serif {
+  font-family: var(--font-serif);
+  font-style: italic;
+}
 
 /* Hover line link */
-.story-link { position: relative; display: inline-block; }
+.story-link {
+  position: relative;
+  display: inline-block;
+}
 .story-link::after {
   content: "";
-  position: absolute; left: 0; bottom: -2px;
-  width: 100%; height: 1px;
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
   background: currentColor;
-  transform: scaleX(0); transform-origin: right;
-  transition: transform .5s cubic-bezier(.7,0,.2,1);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s cubic-bezier(0.7, 0, 0.2, 1);
 }
-.story-link:hover::after { transform: scaleX(1); transform-origin: left; }
+.story-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
 
 /* Image hover zoom */
-.zoom-wrap { overflow: hidden; }
-.zoom-wrap img { transition: transform 1.2s cubic-bezier(.2,.8,.2,1), filter .8s ease; }
-.zoom-wrap:hover img { transform: scale(1.05); filter: saturate(1.05); }
+.zoom-wrap {
+  overflow: hidden;
+}
+.zoom-wrap img {
+  transition:
+    transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1),
+    filter 0.8s ease;
+}
+.zoom-wrap:hover img {
+  transform: scale(1.05);
+  filter: saturate(1.05);
+}
 
 /* Marquee */
-@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-.marquee-track { animation: marquee 40s linear infinite; }
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee 40s linear infinite;
+}
 
 /* Soft fade mask */
-.fade-y-mask { mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent); }
+.fade-y-mask {
+  mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+}
+
+/* Respect the OS "reduce motion" setting */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+  .zoom-wrap img {
+    transition: none;
+  }
+  .zoom-wrap:hover img {
+    transform: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
