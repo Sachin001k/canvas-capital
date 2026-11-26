@@ -206,19 +206,3 @@
 .fade-y-mask {
   mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
 }
-
-/* Respect the OS "reduce motion" setting */
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none;
-  }
-  .zoom-wrap img {
-    transition: none;
-  }
-  .zoom-wrap:hover img {
-    transform: none;
-  }
-  html {
-    scroll-behavior: auto;
-  }
-}

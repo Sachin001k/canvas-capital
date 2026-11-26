@@ -5,25 +5,21 @@ import { Reveal, StaggerWords } from "@/components/Reveal";
 import { MetricGrid } from "@/components/Metric";
 import { Marquee } from "@/components/Marquee";
 import { artworks } from "@/data/artworks";
-import { site } from "@/data/site";
 
-const storyArt = artworks.find((a) => a.title === "Mumbai Meri Jaan")!;
-const featured = artworks.find((a) => a.title === "Mother and Child – I")!;
+const art1 = artworks.find((a) => a.title === "Mumbai Meri Jaan")!.file;
+const featuredArt = artworks.find((a) => a.title === "Mother and Child – I")!.file;
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "My Canvas Dreams — Original Paintings by Ayontika Naha" },
+      { title: "My Canvas Dreams — Art as a Lens on Inequality" },
       {
         name: "description",
         content:
-          "Original paintings by Mumbai artist Ayontika Naha. 50–75% of every sale funds the education of underprivileged girls through Seva Sahayog.",
+          "Editorial portfolio by Ayontika Naha — painter, teacher, and researcher exploring value, access, and human potential.",
       },
-      { property: "og:title", content: "My Canvas Dreams — Original Paintings by Ayontika Naha" },
-      {
-        property: "og:description",
-        content: "Art as a lens on inequality — and a way to fund girls' education.",
-      },
+      { property: "og:title", content: "My Canvas Dreams — Ayontika Naha" },
+      { property: "og:description", content: "A visual essay on art, inequality, and access." },
     ],
   }),
   component: Index,
@@ -34,18 +30,18 @@ function Index() {
     <>
       <Hero />
 
-      <Marquee items={["Painter", "Teacher", "Researcher", "Fundraiser", "Mumbai"]} />
+      <Marquee items={["Painter", "Researcher", "Teacher", "Mumbai", "Since 2018"]} />
 
-      {/* Story */}
+      {/* Intro story */}
       <Section
-        eyebrow="The story"
-        title={<StaggerWords text="A lockdown habit that became a way to give back." />}
+        eyebrow="Prologue"
+        title={<StaggerWords text="A practice that began in lockdown and never quite stopped." />}
       >
         <div className="grid md:grid-cols-12 gap-10 md:gap-16 items-start">
           <Reveal className="md:col-span-6 zoom-wrap">
             <img
-              src={storyArt.file}
-              alt={`${storyArt.title} — painting by ${site.artist}`}
+              src={art1}
+              alt="Acrylic painting of a quiet Indian street"
               className="w-full h-[60vh] object-cover"
               loading="lazy"
             />
@@ -53,22 +49,21 @@ function Index() {
           <div className="md:col-span-6 md:pt-12 space-y-8">
             <Reveal>
               <p className="text-lg md:text-xl leading-relaxed text-foreground/90">
-                I&rsquo;ve loved painting since I was ten. During the COVID-19 lockdown it became a
-                daily ritual — hours at the easel, most days — and slowly turned into something
-                bigger: a way of looking at inequality. Who gets seen. Who gets valued. Who gets a
-                fair chance.
+                What began as painting for hours each day during the COVID-19 lockdown gradually
+                evolved into something larger: an exploration of how art reflects inequality. Who
+                gets seen. Who gets valued. Who gets access to opportunity.
               </p>
             </Reveal>
             <Reveal delay={0.15}>
               <p className="text-base text-muted-foreground leading-relaxed">
-                Today I paint, teach mathematics to underprivileged students, and research how
-                economic policy reaches — or misses — the people at the bottom of the income ladder.
-                Each of the three keeps the others honest.
+                Through painting, teaching, and research, I move between the studio and the
+                classroom, treating creativity, economics, and social impact as three voices in the
+                same essay.
               </p>
             </Reveal>
             <Reveal delay={0.3}>
               <Link to="/about" className="story-link text-sm tracking-wide">
-                Read my story →
+                Read the full story →
               </Link>
             </Reveal>
           </div>
@@ -77,98 +72,76 @@ function Index() {
 
       {/* Metrics */}
       <Section
-        eyebrow="Impact so far"
+        eyebrow="By the numbers"
         title={
           <>
-            Measured in{" "}
+            A practice{" "}
             <span className="italic-serif" style={{ color: "var(--forest)" }}>
-              people,
+              measured
             </span>{" "}
-            not pieces.
+            in people, not pieces.
           </>
         }
       >
         <MetricGrid
           items={[
             { value: "₹1.25L+", label: "Raised through art" },
+            { value: "1,800+", label: "Students impacted" },
+            { value: "07", label: "Years of practice" },
+            { value: "05", label: "Years in community" },
+            { value: "Head Girl", label: "Leadership" },
+            { value: "Interact", label: "Club President" },
+            { value: "Math Club", label: "President" },
             { value: "35+", label: "Paintings sold" },
-            { value: site.donationShare, label: "Of every sale donated" },
-            { value: "1,200+", label: "Students reached" },
           ]}
         />
-        <Reveal>
-          <Link to="/impact" className="mt-10 inline-block story-link text-sm tracking-wide">
-            See where the money goes →
-          </Link>
-        </Reveal>
       </Section>
 
-      {/* Featured work */}
+      {/* Featured Work teaser */}
       <section className="relative">
         <div className="mx-auto max-w-[1500px] px-6 md:px-10 py-24 md:py-36 grid md:grid-cols-12 gap-10">
           <div className="md:col-span-5 md:sticky md:top-32 self-start">
-            <p className="eyebrow mb-6">Featured painting</p>
+            <p className="eyebrow mb-6">Featured Series</p>
             <h2 className="display-lg">
-              Mother and{" "}
+              Invisible{" "}
               <span className="italic-serif" style={{ color: "var(--burgundy)" }}>
-                Child
+                Artists
               </span>
             </h2>
             <p className="mt-8 text-muted-foreground max-w-md leading-relaxed">
-              A mother cradles her sleeping child among wildflowers — a portrait of the quiet,
-              everyday work of care that is everywhere and rarely seen. An original, signed by the
-              artist.
+              A thematic series exploring creators who lack visibility, recognition, and fair
+              compensation — and the quiet economies of creative labour.
             </p>
-            <dl className="mt-8 grid grid-cols-2 gap-4 max-w-xs text-sm border-t border-border/60 pt-6">
-              <div>
-                <dt className="eyebrow text-[10px]">Status</dt>
-                <dd className="mt-2">{featured.sold ? "Sold" : "Available"}</dd>
-              </div>
-              <div>
-                <dt className="eyebrow text-[10px]">Price</dt>
-                <dd className="mt-2">{featured.price ? `₹${featured.price}` : "On request"}</dd>
-              </div>
-            </dl>
-            <div className="mt-10 flex flex-wrap gap-6">
-              <Link
-                to="/product/$slug"
-                params={{ slug: featured.slug }}
-                className="inline-flex items-center gap-3 story-link text-sm"
-              >
-                View this painting →
-              </Link>
-              <Link
-                to="/work"
-                className="inline-flex items-center gap-3 story-link text-sm text-muted-foreground"
-              >
-                Browse the gallery
-              </Link>
-            </div>
+            <Link to="/work" className="mt-10 inline-flex items-center gap-3 story-link text-sm">
+              Enter the gallery →
+            </Link>
           </div>
           <Reveal className="md:col-span-7 zoom-wrap">
-            <Link to="/product/$slug" params={{ slug: featured.slug }} className="block">
-              <img
-                src={featured.file}
-                alt={`${featured.title} — painting by ${site.artist}`}
-                className="w-full h-[80vh] object-cover"
-                loading="lazy"
-              />
-            </Link>
+            <img
+              src={featuredArt}
+              alt="Mother and Child – original acrylic painting"
+              className="w-full h-[80vh] object-cover"
+              loading="lazy"
+            />
           </Reveal>
         </div>
       </section>
 
-      {/* Three threads */}
+      {/* CTA */}
       <Section className="!py-40">
         <Reveal>
           <p className="display-xl leading-[0.95]">
-            <span className="text-foreground/30">Paint.</span>{" "}
-            <span className="italic-serif" style={{ color: "var(--forest)" }}>
-              Teach.
-            </span>
+            <span className="text-foreground/30">Three threads.</span>
             <br />
+            One{" "}
+            <span className="italic-serif" style={{ color: "var(--forest)" }}>
+              quiet
+            </span>{" "}
+            argument
+            <br />
+            about{" "}
             <span className="italic-serif" style={{ color: "var(--burgundy)" }}>
-              Question.
+              value.
             </span>
           </p>
         </Reveal>
@@ -177,20 +150,20 @@ function Index() {
             {
               to: "/work",
               n: "01",
-              t: "The Gallery",
-              d: "Original paintings, available to buy within India.",
-            },
-            {
-              to: "/impact",
-              n: "02",
-              t: "Impact",
-              d: "Funding girls' education and teaching maths to those who need it most.",
+              t: "Art & Inquiry",
+              d: "A gallery of paintings, themes, and questions.",
             },
             {
               to: "/research",
+              n: "02",
+              t: "Economic Inquiry",
+              d: "Research at the seam of policy and people.",
+            },
+            {
+              to: "/impact",
               n: "03",
-              t: "Research",
-              d: "A working paper on whether GST has helped India's bottom 50%.",
+              t: "Expanding Access",
+              d: "Teaching, fundraising, and quiet redistribution.",
             },
           ].map((c) => (
             <Link

@@ -2,9 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { artworks } from "@/data/artworks";
-import { site } from "@/data/site";
 
-const collage = artworks.find((a) => a.title === "Hues of Autumn")!.file;
+const collage = artworks.find((a) => a.title === "Moonlit Leopard")!.file;
 const art2 = artworks.find((a) => a.title === "Periwinkle Petals")!.file;
 const research = artworks.find((a) => a.title === "Chefchaouen")!.file;
 
@@ -16,7 +15,7 @@ export function Hero() {
   const y3 = useTransform(scrollYProgress, [0, 1], [0, -200]);
 
   return (
-    <section ref={ref} className="relative min-h-[100svh] pt-24 lg:pt-28 pb-16 overflow-hidden">
+    <section ref={ref} className="relative min-h-[100svh] pt-28 pb-20 overflow-hidden">
       <div className="mx-auto max-w-[1500px] px-6 md:px-10 grid lg:grid-cols-12 gap-10 items-center">
         <div className="lg:col-span-7 relative z-10">
           <motion.p
@@ -25,10 +24,10 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            Original paintings · Mumbai, India
+            Vol. 01 — An Editorial Practice
           </motion.p>
 
-          <h1 className="display-xl" style={{ fontSize: "clamp(3rem, 7vw, 8.5rem)" }}>
+          <h1 className="display-xl">
             <motion.span
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
@@ -41,7 +40,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.1, ease: [0.2, 0.8, 0.2, 1], delay: 0.5 }}
-              className="block italic-serif whitespace-nowrap"
+              className="block italic-serif"
               style={{ color: "var(--burgundy)" }}
             >
               on Inequality.
@@ -52,57 +51,32 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.9 }}
-            className="mt-8 max-w-xl text-base md:text-lg text-muted-foreground leading-relaxed"
+            className="mt-10 max-w-xl text-base md:text-lg text-muted-foreground leading-relaxed"
           >
-            Original paintings of nature, city streets and everyday life — each one a quiet question
-            about who gets seen, who gets valued, and who gets a fair chance.
-            <span className="block mt-4 text-foreground/85">
-              {site.donationShare} of every sale funds the education of underprivileged girls
-              through {site.ngo}.
-            </span>
+            Exploring how value is created, perceived, and distributed — through painting, teaching,
+            and quiet research at the intersection of creativity and economics.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.1 }}
-            className="mt-10 flex flex-wrap items-center gap-4"
+            className="mt-12 flex flex-wrap items-center gap-4"
           >
             <Link
               to="/work"
               className="group inline-flex items-center gap-3 px-7 py-4 rounded-full bg-foreground text-background text-sm tracking-wide hover:bg-[var(--forest)] transition-colors duration-500"
             >
-              Shop the Gallery
+              View My Work
               <span className="transition-transform duration-500 group-hover:translate-x-1">→</span>
             </Link>
             <Link
-              to="/impact"
+              to="/research"
               className="inline-flex items-center gap-3 px-7 py-4 rounded-full border border-foreground/30 text-sm tracking-wide hover:border-foreground transition-colors story-link"
             >
-              See the Impact
+              View Research
             </Link>
           </motion.div>
-
-          <motion.dl
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1.3 }}
-            className="mt-10 grid grid-cols-3 gap-6 border-t border-border/60 pt-6 max-w-xl"
-          >
-            {[
-              { v: "₹1.25L+", l: "raised through art" },
-              { v: "35+", l: "paintings sold" },
-              { v: "1,200+", l: "students reached" },
-            ].map((s) => (
-              <div key={s.l}>
-                <dt className="sr-only">{s.l}</dt>
-                <dd className="font-[family-name:var(--font-display)] italic text-xl md:text-2xl leading-none">
-                  {s.v}
-                </dd>
-                <dd className="eyebrow mt-2 text-[10px]">{s.l}</dd>
-              </div>
-            ))}
-          </motion.dl>
         </div>
 
         {/* Collage */}
@@ -114,11 +88,7 @@ export function Hero() {
             transition={{ duration: 1.6, ease: [0.2, 0.8, 0.2, 1], delay: 0.4 }}
             className="absolute inset-0"
           >
-            <img
-              src={collage}
-              alt="Hues of Autumn — painting by Ayontika Naha"
-              className="w-full h-full object-cover object-center"
-            />
+            <img src={collage} alt="" className="w-full h-full object-cover object-center" />
           </motion.div>
 
           <motion.div
@@ -136,7 +106,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 80 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.4, delay: 1.1 }}
-            className="absolute -right-2 top-6 w-32 md:w-44 aspect-[4/3] shadow-2xl ring-1 ring-border/40 hidden md:block bg-background"
+            className="absolute -right-6 top-6 w-32 md:w-44 aspect-[4/3] shadow-2xl ring-1 ring-border/40 hidden md:block bg-background"
           >
             <img src={research} alt="" className="w-full h-full object-cover" />
           </motion.div>
@@ -144,8 +114,7 @@ export function Hero() {
       </div>
 
       {/* Scroll cue */}
-      {/* Only on tall screens, where it can't collide with the CTA row */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden [@media(min-height:1000px)]:flex flex-col items-center gap-3 text-muted-foreground">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-muted-foreground">
         <span className="eyebrow">Scroll</span>
         <motion.div
           className="w-px h-10 bg-foreground/40 origin-top"
