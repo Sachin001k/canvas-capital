@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Section } from "@/components/Section";
 import { Reveal } from "@/components/Reveal";
 import { artworks } from "@/data/artworks";
+import { StudentWorks } from "@/components/StudentWorks";
 import { site } from "@/data/site";
 
 export const Route = createFileRoute("/work")({
@@ -216,6 +217,8 @@ function WorkPage() {
           </Link>
         </div>
       </Section>
+
+      <StudentWorks />
     </>
   );
 }
