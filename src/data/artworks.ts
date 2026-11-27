@@ -74,9 +74,8 @@ export const artworks: Artwork[] = [
   { title: "Rhythm of the Mind", file: "rhythm-of-the-mind.jpeg" },
   { title: "Chefchaouen", file: "chefchaouen.jpeg" },
   { title: "A Journey Called Life", file: "a-journey-called-life.jpeg" },
-  // TODO: confirm real titles, prices and sold status for these two (added from the "Website pics" Drive folder).
+  // TODO: confirm real title, price and sold status (added from the "Website pics" Drive folder).
   { title: "Moonlit Leopard", file: "moonlit-leopard.jpg" },
-  { title: "Charcoal Landscape", file: "charcoal-landscape.jpg" },
 ].map((a) => ({
   ...a,
   file: get(a.file),

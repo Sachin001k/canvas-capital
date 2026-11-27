@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Section } from "@/components/Section";
 import { Reveal } from "@/components/Reveal";
 import { artworks } from "@/data/artworks";
+import { StudentWorks } from "@/components/StudentWorks";
 
 export const Route = createFileRoute("/work")({
   head: () => ({
@@ -167,6 +168,8 @@ function WorkPage() {
           ))}
         </div>
       </Section>
+
+      <StudentWorks />
     </>
   );
 }
